@@ -19,7 +19,19 @@ return {
       })
 
       local lspconfig = require("lspconfig")
-      local capabilities = require("cmp_nvim_lsp").default_capabilities()
+      -- VERSÃO NOVA E CORRETA (substitua a linha antiga por este bloco)
+
+      -- Montando as 'capabilities' do cliente Neovim
+      local capabilities = vim.lsp.protocol.make_client_capabilities()
+
+      -- (A LINHA MAIS IMPORTANTE)
+      -- Diz aos servidores que esta é a nossa ordem de preferência para "réguas".
+      -- A maioria dos servidores modernos escolherá a primeira da lista: "utf-8".
+      capabilities.general.positionEncodings = { "utf-8", "utf-16" }
+
+      -- Agora, junta as nossas capabilities (com a regra do utf-8)
+      -- com as capabilities específicas do nvim-cmp para o autocompletar funcionar.
+      capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
 
       local servers = {
