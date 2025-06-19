@@ -17,7 +17,7 @@ return {
 
     -- Carrega os snippets da coleção "friendly-snippets"
     require("luasnip.loaders.from_vscode").lazy_load()
-
+ 
     cmp.setup({
       -- Prioriza snippets nas sugestões
       snippet = {
@@ -37,6 +37,14 @@ return {
         ['<C-d>'] = cmp.mapping.scroll_docs(4),
         -- Fechar a janela de autocompletar
         ['<C-e>'] = cmp.mapping.abort(),
+                -- Mapeamento para abrir a janela de snippets
+        ['<C-l>'] = function(fallback)
+            if cmp.visible() then
+                cmp.select_next_item()
+            else
+                cmp.complete({ config = { sources = { { name = 'luasnip' } } } })
+            end
+        end,
       }),
       -- Ordem das fontes de sugestões
       sources = cmp.config.sources({
@@ -46,5 +54,5 @@ return {
         { name = "path" },
       }),
     })
-  end,
+    end,
 }
