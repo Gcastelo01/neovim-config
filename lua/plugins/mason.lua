@@ -12,6 +12,9 @@ return {
         "lua_ls",
         "basedpyright",
         "ruff",
+        "eslint",
+        "ts_ls",
+
       }
 
       require("mason-lspconfig").setup({
@@ -30,6 +33,8 @@ return {
       local servers = {
         lua_ls = {},
         basedpyright = {},
+        eslint = {},
+        ts_ls = {},
       }
 
       for server, config in pairs(servers) do
