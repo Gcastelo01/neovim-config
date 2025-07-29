@@ -14,7 +14,7 @@ return {
         "ruff",
         "eslint",
         "ts_ls",
-
+        "cpptools",
       }
 
       require("mason-lspconfig").setup({
