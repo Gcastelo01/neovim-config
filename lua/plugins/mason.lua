@@ -14,7 +14,6 @@ return {
         "ruff",
         "eslint",
         "ts_ls",
-        "cpptools",
       }
 
       require("mason-lspconfig").setup({
@@ -57,7 +56,8 @@ return {
           vim.keymap.set('n', 'K', vim.lsp.buf.hover, { buffer = bufnr, desc = "Ver documentação (Hover)" })
           vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { buffer = bufnr, desc = "Ir para Definição" })
           vim.keymap.set('n', 'gr', vim.lsp.buf.references, { buffer = bufnr, desc = "Ver Referências" })
-          vim.keymap.set('n', '<leader>gl', vim.diagnostic.open_float, {buffer = bufnr, desc = "Ver diagnóstico flutuante"})
+          vim.keymap.set('n', '<leader>gl', vim.diagnostic.open_float,
+            { buffer = bufnr, desc = "Ver diagnóstico flutuante" })
         end
 
         -- Define as 'capabilities' para o servidor
@@ -66,7 +66,6 @@ return {
         -- Ativa o servidor com as configurações definidas
         lspconfig[server].setup(config)
       end
-
     end,
     dependencies = {
       { "mason-org/mason.nvim", opts = {} },
